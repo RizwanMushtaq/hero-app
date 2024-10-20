@@ -8,14 +8,6 @@ defineProps({
     canRegister: {
         type: Boolean,
     },
-    laravelVersion: {
-        type: String,
-        required: true,
-    },
-    phpVersion: {
-        type: String,
-        required: true,
-    },
 });
 
 function handleImageError() {
@@ -65,6 +57,7 @@ function handleImageError() {
                     src="../../../public/images/hero-handwerkersoftware-cloud-app.png.webp"
                 />
             </div>
+            <!-- <Link :href="route('feedbacks')" class=""> Go to Feedbacks </Link> -->
         </main>
 
         <footer class="footer">
