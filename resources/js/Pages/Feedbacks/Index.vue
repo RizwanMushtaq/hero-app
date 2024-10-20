@@ -1,8 +1,11 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import Feedback from "@/Components/Feedback.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import { useForm, Head } from "@inertiajs/vue3";
+
+defineProps(["feedbacks"]);
 
 const form = useForm({
     message: "",
@@ -29,6 +32,14 @@ const form = useForm({
                 <InputError :message="form.errors.message" class="mt-2" />
                 <PrimaryButton class="mt-4">Feedback</PrimaryButton>
             </form>
+
+            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+                <Feedback
+                    v-for="feedback in feedbacks"
+                    :key="feedback.id"
+                    :feedback="feedback"
+                />
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>
