@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Feedback;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -61,16 +62,23 @@ class FeedbackController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Feedback $feedback)
+    public function update(Request $request, Feedback $feedback): RedirectResponse
     {
-        //
+        Gate::authorize('update', $feedback);
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+        $feedback->update($validated);
+        return redirect(route('feedbacks.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Feedback $feedback)
+    public function destroy(Feedback $feedback): RedirectResponse
     {
-        //
+        Gate::authorize('delete', $feedback);
+        $feedback->delete();
+        return redirect(route('feedbacks.index'));
     }
 }
