@@ -21,6 +21,15 @@
 -   Its availble at http://3.70.187.163
 -   Currently only HTTP port 80 is exposed.
 
+### Application Features:
+
+- Signup with email and password
+- Login with email and password
+- Profile Page
+- Landing Page
+- Dashboard and Feedbacks Page
+- User can add/update/delete his own feedbacks.
+
 ### Further possible improvements:
 
 -   Use HTTPS protocol instead of HTTP protocol to establish a secure connection between client and server.
